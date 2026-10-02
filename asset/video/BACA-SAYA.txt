@@ -1,0 +1,4 @@
+Taruh video cover di folder ini (opsional), misalnya cover.mp4.
+Lalu isi videoCover di js/config.js:  videoCover: "asset/video/cover.mp4"
+
+Saran: 5-15 detik, tanpa suara, format MP4 (H.264), kurang dari 5 MB.

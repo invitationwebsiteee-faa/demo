@@ -1,0 +1,504 @@
+/* =====================================================================
+   style.css — tampilan undangan
+   Warna ada di bagian VARIABEL di bawah ini. Ganti kode warna di sini
+   dan seluruh undangan ikut berubah.
+   ===================================================================== */
+
+/* ===== VARIABEL ===== */
+:root {
+  --sand:     #EFE9E1;
+  --stone:    #D6CCC0;
+  --clay:     #A38A72;
+  --espresso: #4A3F35;
+  --ink:      #2E2823;
+}
+
+/* ===== RESET ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--sand);
+  font-family: "Cormorant Garamond", serif;
+  color: var(--espresso);
+}
+/* ===== BACKGROUND HALAMAN ===== */
+.page-bg {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: -1;
+  max-width: 480px;
+  margin: 0 auto;
+  /* gambar diisi dari js/config.js */
+  background-size: cover;
+  background-position: center;
+  opacity: 0.18;
+}
+
+/* gradient biar atas & bawah menyatu ke warna halaman */
+.page-bg::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    180deg,
+    var(--sand) 0%,
+    rgba(239, 233, 225, 0) 28%,
+    rgba(239, 233, 225, 0) 72%,
+    var(--sand) 100%
+  );
+}
+
+/* ===== COVER ===== */
+.cover {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 480px;
+  height: 100dvh;
+  margin: 0 auto;
+  overflow: hidden;
+  background-color: var(--stone);
+  /* gambar diisi dari js/config.js */
+  background-size: cover;
+  background-position: center;
+}
+
+/* kunci scroll selama cover masih terbuka */
+body.locked {
+  overflow: hidden;
+  height: 100dvh;
+}
+
+body.locked .section {
+  opacity: 0;
+}
+
+/* lapisan gelap biar teks tetap terbaca */
+.cover::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: linear-gradient(
+    180deg,
+    rgba(46, 40, 35, 0.45) 0%,
+    rgba(46, 40, 35, 0.25) 45%,
+    rgba(46, 40, 35, 0.65) 100%
+  );
+}
+
+.cover-text {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  padding: 0 24px;
+  color: var(--sand);
+  text-align: center;
+}
+
+.cover-label {
+  font-size: 1.15rem;
+  font-weight: 300;
+  letter-spacing: 0.1em;
+}
+
+.cover-names {
+  margin: 6px 0 16px;
+  font-family: "Great Vibes", cursive;
+  font-weight: 400;
+  line-height: 1.05;
+}
+
+.cover-names .name {
+  display: block;
+  font-size: clamp(3.4rem, 15vw, 4.8rem);
+}
+
+.cover-names .amp {
+  display: block;
+  margin: 2px 0;
+  font-size: clamp(1.6rem, 7vw, 2.2rem);
+}
+
+.cover-date {
+  font-size: 1rem;
+  letter-spacing: 0.3em;
+}
+
+/* ===== NAMA TAMU ===== */
+.cover-guest {
+  margin-top: 34px;
+}
+
+.guest-label {
+  font-size: 0.85rem;
+  font-weight: 300;
+  letter-spacing: 0.18em;
+}
+
+.guest-name {
+  margin-top: 6px;
+  font-size: 1.35rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+}
+
+/* ===== TOMBOL ===== */
+.btn-open {
+  margin-top: 28px;
+  padding: 12px 34px;
+  border: 1px solid var(--sand);
+  border-radius: 999px;
+  background: transparent;
+  color: var(--sand);
+  font-family: inherit;
+  font-size: 0.95rem;
+  letter-spacing: 0.15em;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.btn-open:hover {
+  background: var(--sand);
+  color: var(--ink);
+}
+
+/* ===== SECTION ===== */
+.section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  max-width: 480px;
+  min-height: 100dvh;
+  margin: 0 auto;
+  padding: 90px 32px;
+  background: transparent;
+  text-align: center;
+  overflow-x: hidden;
+}
+
+/* selang-seling warna biar ada jeda visual */
+.section:nth-of-type(even) {
+   background: rgba(214, 204, 192, 0.45);
+}
+
+.section-label {
+  margin-bottom: 34px;
+  color: var(--clay);
+  font-size: 0.85rem;
+  letter-spacing: 0.32em;
+  text-transform: uppercase;
+}
+
+/* ===== QUOTE ===== */
+.quote-arabic {
+  margin-bottom: 28px;
+  font-size: 1.5rem;
+  line-height: 2;
+}
+
+.quote-text {
+  max-width: 340px;
+  font-size: 1.15rem;
+  font-weight: 300;
+  line-height: 1.9;
+}
+
+.quote-source {
+  margin-top: 22px;
+  color: var(--clay);
+  font-size: 0.9rem;
+  letter-spacing: 0.2em;
+}
+
+/* ===== FOTO MEMPELAI ===== */
+.photo-frame {
+  width: 220px;
+  height: 290px;
+  margin-bottom: 34px;
+  overflow: hidden;
+  border-radius: 130px 130px 10px 10px;
+}
+
+.photo-frame img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===== MEMPELAI ===== */
+.person {
+  margin: 8px 0;
+}
+
+.person-name {
+  font-family: "Great Vibes", cursive;
+  font-size: clamp(1.9rem, 8vw, 2.5rem);
+  font-weight: 400;
+  line-height: 1.2;
+}
+
+.person-info {
+  margin-top: 10px;
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.amp-divider {
+  margin: 24px 0;
+  color: var(--clay);
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem;
+}
+
+/* ===== ACARA ===== */
+.event-card {
+  width: 100%;
+  max-width: 320px;
+  margin-bottom: 24px;
+  padding: 30px 22px;
+  border: 1px solid var(--clay);
+  border-radius: 4px;
+}
+
+.event-title {
+  margin-bottom: 14px;
+  font-family: "Great Vibes", cursive;
+  font-size: 2rem;
+  font-weight: 400;
+}
+
+.event-time {
+  font-size: 1rem;
+  font-weight: 300;
+  line-height: 1.8;
+}
+
+.event-place {
+  margin-top: 12px;
+  color: var(--clay);
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.7;
+}
+
+/* ===== PENUTUP ===== */
+.closing-names {
+  margin-top: 34px;
+  font-family: "Great Vibes", cursive;
+  font-size: 2.6rem;
+  line-height: 1.3;
+}
+
+/* ===== TOMBOL MUSIK ===== */
+.btn-music {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  z-index: 500;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  width: 44px;
+  height: 44px;
+  border: 1px solid var(--clay);
+  border-radius: 50%;
+  background: var(--sand);
+  color: var(--espresso);
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+/* muncul setelah undangan dibuka */
+.btn-music.show {
+  display: flex;
+}
+
+.btn-music:hover {
+  background: var(--clay);
+  color: var(--sand);
+}
+
+/* ikon berputar saat musik jalan */
+.music-icon {
+  display: inline-block;
+}
+
+.btn-music.playing .music-icon {
+  animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* saat dipause, ikon dibuat samar */
+.btn-music.paused {
+  opacity: 0.45;
+}
+
+/* ===== RSVP ===== */
+.rsvp-form {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  width: 100%;
+  max-width: 320px;
+}
+
+.rsvp-input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid var(--clay);
+  border-radius: 4px;
+  background: rgba(255, 255, 255, 0.5);
+  color: var(--espresso);
+  font-family: inherit;
+  font-size: 1rem;
+  outline: none;
+  transition: border-color 0.3s ease;
+}
+
+.rsvp-input:focus {
+  border-color: var(--espresso);
+}
+
+.rsvp-input::placeholder {
+  color: var(--clay);
+}
+
+textarea.rsvp-input {
+  resize: none;
+}
+
+.btn-rsvp {
+  margin-top: 6px;
+  padding: 13px;
+  border: none;
+  border-radius: 4px;
+  background: var(--espresso);
+  color: var(--sand);
+  font-family: inherit;
+  font-size: 1rem;
+  letter-spacing: 0.12em;
+  cursor: pointer;
+  transition: background 0.3s ease;
+}
+
+.btn-rsvp:hover {
+  background: var(--ink);
+}
+
+.btn-rsvp:disabled {
+  opacity: 0.5;
+  cursor: default;
+}
+
+/* ===== DAFTAR UCAPAN ===== */
+.rsvp-list {
+  width: 100%;
+  max-width: 320px;
+  max-height: 300px;
+  margin-top: 30px;
+  overflow-y: auto;
+  text-align: left;
+}
+
+.rsvp-item {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-left: 2px solid var(--clay);
+  background: rgba(255, 255, 255, 0.4);
+}
+
+.rsvp-nama {
+  font-size: 1.05rem;
+  font-weight: 500;
+}
+
+.rsvp-hadir {
+  color: var(--clay);
+  font-size: 0.85rem;
+  letter-spacing: 0.08em;
+}
+
+.rsvp-pesan {
+  margin-top: 6px;
+  font-size: 0.95rem;
+  font-weight: 300;
+  line-height: 1.6;
+}
+
+.rsvp-info {
+  color: var(--clay);
+  font-size: 0.95rem;
+  text-align: center;
+}
+
+/* ===== VIDEO COVER (opsional, diatur dari config.js) ===== */
+.cover-video {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+.cover-video[hidden] { display: none; }
+
+/* ===== TOMBOL LIHAT LOKASI ===== */
+.event-peta {
+  display: inline-block;
+  margin-top: 18px;
+  padding: 8px 22px;
+  border: 1px solid var(--clay);
+  border-radius: 999px;
+  color: var(--espresso);
+  font-size: 0.9rem;
+  letter-spacing: 0.12em;
+  text-decoration: none;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+.event-peta:hover {
+  background: var(--clay);
+  color: var(--sand);
+}
+
+/* ===== PESAN STATUS FORM ===== */
+.rsvp-status {
+  min-height: 1.4em;
+  color: var(--clay);
+  font-size: 0.95rem;
+}
+.rsvp-catatan {
+  max-width: 320px;
+  margin-top: 14px;
+  color: var(--clay);
+  font-size: 0.85rem;
+  font-style: italic;
+}
+.rsvp-catatan[hidden] { display: none; }
+
+/* pilihan kehadiran yang masih kosong tampil samar seperti placeholder */
+select.rsvp-input:invalid { color: var(--clay); }
+select.rsvp-input option { color: var(--espresso); }

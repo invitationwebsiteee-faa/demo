@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Undangan Pernikahan</title>
+
+  <!-- ============================================================
+       PREVIEW SAAT LINK DIBAGIKAN (WhatsApp, Instagram, dll.)
+       Edit 3 baris di bawah ini langsung di sini. Kolom "content"
+       untuk og:image sebaiknya diisi alamat lengkap setelah online,
+       misalnya https://namakamu.github.io/undangan/asset/foto/cover.jpg
+       ============================================================ -->
+  <meta property="og:title" content="Undangan Pernikahan Sekar &amp; Raka" />
+  <meta property="og:description" content="Kami mengundang Bapak/Ibu/Saudara untuk hadir di hari bahagia kami." />
+  <meta property="og:image" content="asset/foto/cover.jpg" />
+
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Great+Vibes&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="css/style.css" />
+</head>
+
+<!--
+  Halaman ini hanya KERANGKA. Semua tulisan, foto, tanggal, dan musik
+  diatur dari satu file: js/config.js
+-->
+<body class="locked">
+  <div class="page-bg" id="latar"></div>
+
+  <!-- ===== COVER ===== -->
+  <section class="cover" id="cover">
+    <video class="cover-video" id="cover-video" muted loop playsinline hidden></video>
+
+    <div class="cover-text">
+      <p class="cover-label">The Wedding of</p>
+
+      <h1 class="cover-names">
+        <span class="name" id="cover-nama-1"></span>
+        <span class="amp">&amp;</span>
+        <span class="name" id="cover-nama-2"></span>
+      </h1>
+
+      <p class="cover-date" id="cover-tanggal"></p>
+
+      <div class="cover-guest">
+        <p class="guest-label">Kepada Yth.</p>
+        <p class="guest-name" id="guest-name"></p>
+      </div>
+
+      <button class="btn-open" type="button">Buka Undangan</button>
+    </div>
+  </section>
+
+
+  <!-- ===== AYAT ===== -->
+  <section class="section">
+    <p class="reveal quote-arabic" id="ayat-arab" lang="ar" dir="rtl"></p>
+    <p class="reveal quote-text" id="ayat-terjemah"></p>
+    <p class="reveal quote-source" id="ayat-sumber"></p>
+  </section>
+
+
+  <!-- ===== MEMPELAI ===== -->
+  <section class="section">
+    <p class="reveal section-label">Mempelai</p>
+
+    <div class="reveal photo-frame">
+      <img id="foto-mempelai" src="" alt="Foto mempelai" />
+    </div>
+
+    <div id="mempelai-daftar"></div>
+  </section>
+
+
+  <!-- ===== ACARA ===== -->
+  <section class="section">
+    <p class="reveal section-label">Waktu &amp; Tempat</p>
+    <div id="acara-daftar"></div>
+  </section>
+
+
+  <!-- ===== UCAPAN & DOA ===== -->
+  <section class="section">
+    <p class="reveal section-label">Ucapan &amp; Doa</p>
+
+    <div class="reveal rsvp-form">
+      <input type="text" id="rsvp-nama" class="rsvp-input" placeholder="Nama kamu" maxlength="80" />
+
+      <select id="rsvp-hadir" class="rsvp-input" required>
+        <option value="" selected disabled>Kehadiran 💕</option>
+        <option value="Hadir">Hadir</option>
+        <option value="Belum bisa hadir">Belum bisa hadir</option>
+      </select>
+
+      <textarea id="rsvp-pesan" class="rsvp-input" rows="3" maxlength="500" placeholder="Tulis ucapan &amp; doa"></textarea>
+
+      <button class="btn-rsvp" type="button">Kirim</button>
+      <p class="rsvp-status" id="rsvp-status" role="status"></p>
+    </div>
+
+    <div class="reveal rsvp-list" id="rsvp-list">
+      <p class="rsvp-info">Memuat ucapan...</p>
+    </div>
+    <p class="rsvp-catatan" id="rsvp-catatan" hidden>
+      Ini versi demo: ucapan hanya tampil di layarmu dan tidak disimpan.
+    </p>
+  </section>
+
+
+  <!-- ===== PENUTUP ===== -->
+  <section class="section">
+    <p class="reveal quote-text" id="penutup-teks"></p>
+    <p class="reveal closing-names" id="penutup-nama"></p>
+  </section>
+
+
+  <audio id="musik" loop></audio>
+
+  <button class="btn-music" type="button" aria-label="Putar atau jeda musik">
+    <span class="music-icon">&#9835;</span>
+  </button>
+
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/gsap.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.5/dist/ScrollTrigger.min.js"></script>
+  <script src="js/config.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>

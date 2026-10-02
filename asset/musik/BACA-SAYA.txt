@@ -1,0 +1,6 @@
+Taruh file musik (mp3) di folder ini (opsional), misalnya lagu.mp3.
+Lalu isi musik di js/config.js:  musik: "asset/musik/lagu.mp3"
+
+Pakai lagu bebas royalti atau yang kamu punya izinnya. Jangan memakai
+lagu hasil unduhan dari TikTok atau YouTube untuk undangan yang dijual
+atau dibagikan.
